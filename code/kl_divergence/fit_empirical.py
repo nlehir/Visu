@@ -1,0 +1,113 @@
+"""
+Using the KL divergenve, choose the best model to fit the data
+"""
+
+import csv
+# import ipdb
+import matplotlib.pyplot as plt
+from scipy.stats import entropy
+import numpy as np
+
+# open file
+file_name = 'empirical_distribution.csv'
+
+index = []
+data = []
+
+# load the csv file to python lists
+with open(file_name, 'r') as f:
+    reader = csv.reader(f)
+    row_index = 0
+    for row in reader:
+        if row_index >= 1:
+            index.append(int(row[0]))
+            data.append(float(row[1]))
+        row_index = row_index + 1
+
+
+nb_points = len(data)
+
+"""
+plot the data
+"""
+plt.plot(index, data)
+title = 'Empirical Distribution'
+# plt.title(title)
+plt.xlabel('index')
+plt.ylabel('value')
+plt.savefig('empirical_distribution.pdf')
+plt.close()
+
+
+"""
+build a histogram of the empirical data
+"""
+nbins = 100
+empirical_data, bins, _ = plt.hist(data, bins=nbins)
+title = 'empirical distribution : histogram, ' + str(nbins) + ' bins'
+plt.title(title)
+plt.xlabel('value')
+plt.ylabel('nb of occurrences')
+plt.savefig('empirical_hist_' + str(nbins) + '_bins.pdf')
+plt.close()
+
+
+"""
+try models and compare them to the empirical distribution
+"""
+
+
+def try_model(mean_model, std_model, empirical_data, bins):
+    """
+    we will use normal models in this example
+    """
+    # sample new data from our model
+    # we will compare them to the empirical set
+    model_sample = np.random.normal(mean_model, std_model, nb_points)
+
+    # Compute the histogram of data sampled from your model
+    # we must use the same bins as the empirical distribution
+    # in order to compare the distributions
+    model_hist, _, _ = plt.hist(model_sample, bins=bins, alpha=0.4)
+
+    # plot the histogram of the empirical data
+    # to visually compare the two sample sets (empirical vs model)
+    empirical_data_hist, bins, _ = plt.hist(data, bins=nbins, alpha=0.4)
+
+    # we will compute the KL divergence, but before we will
+    # cheat and add artificial samples to each value.
+    # if we don't do so, the divergence might be infinite
+    # because some probabilities can take a value of 0
+    model_hist = model_hist + 1
+    empirical_data_hist = empirical_data_hist + 1
+    # compute the kl divergence between the two distributions
+    # the entropy function of scipy computes the KL
+    # divergence if two distributions are provided
+    # (see the scipy doc)
+    kl_divergence = entropy(model_hist, empirical_data_hist)
+    # print stuff
+    # print('\n---')
+    # print(kl_divergence)
+    # print(model_hist)
+    # print(empirical_data_hist)
+
+    # save stuff to monitor
+    # annotate the plot with the KL divergence
+    # we don't need all the decimals here so we can
+    # use round to keep only two decimals
+    plt.annotate('KL=' + str(round(kl_divergence, 2)),
+                 (20, 100),
+                 fontsize=(14))
+    title = 'model mean : ' + str(mean_model) + ', model std : ' + str(std_model)
+    plt.title(title)
+    plt.xlabel('value')
+    plt.ylabel('nb of occurrences')
+    plt.savefig('model_hist_mean_' +
+                str(mean_model) + '_std_' +
+                str(std_model) + '.pdf')
+    plt.close()
+
+
+try_model(4, 1, empirical_data, bins)
+try_model(10, 3, empirical_data, bins)
+try_model(10, 5, empirical_data, bins)

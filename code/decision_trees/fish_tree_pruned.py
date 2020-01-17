@@ -15,7 +15,7 @@ max_depth = 2
 our_tree = tree.DecisionTreeClassifier(max_depth=max_depth,
                                        criterion="entropy",
                                        min_samples_split=0,
-                                      min_impurity_decrease=0.0)
+                                       min_impurity_decrease=0.0)
 our_tree = our_tree.fit(fish_features, fish_class)
 
 # convert the graph to graphviz in order to visualize it

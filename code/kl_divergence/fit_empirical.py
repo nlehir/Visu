@@ -32,10 +32,9 @@ plot the data
 """
 plt.plot(index, data)
 title = 'Empirical Distribution'
-# plt.title(title)
 plt.xlabel('index')
 plt.ylabel('value')
-plt.savefig('empirical_distribution.pdf')
+plt.savefig('images/empirical_distribution.pdf')
 plt.close()
 
 
@@ -44,11 +43,11 @@ build a histogram of the empirical data
 """
 nbins = 100
 empirical_data, bins, _ = plt.hist(data, bins=nbins)
-title = 'empirical distribution : histogram, ' + str(nbins) + ' bins'
+title = f"empirical distribution : histogram, {nbins} bins"
 plt.title(title)
 plt.xlabel('value')
 plt.ylabel('nb of occurrences')
-plt.savefig('empirical_hist_' + str(nbins) + '_bins.pdf')
+plt.savefig(f"images/empirical_hist_{nbins}_bins.pdf")
 plt.close()
 
 
@@ -80,34 +79,32 @@ def try_model(mean_model, std_model, empirical_data, bins):
     # because some probabilities can take a value of 0
     model_hist = model_hist + 1
     empirical_data_hist = empirical_data_hist + 1
+
     # compute the kl divergence between the two distributions
     # the entropy function of scipy computes the KL
     # divergence if two distributions are provided
     # (see the scipy doc)
     kl_divergence = entropy(model_hist, empirical_data_hist)
-    # print stuff
+
+    # print information
     # print('\n---')
     # print(kl_divergence)
     # print(model_hist)
     # print(empirical_data_hist)
 
-    # save stuff to monitor
     # annotate the plot with the KL divergence
     # we don't need all the decimals here so we can
     # use round to keep only two decimals
     plt.annotate('KL=' + str(round(kl_divergence, 2)),
                  (20, 100),
                  fontsize=(14))
-    title = 'model mean : ' + str(mean_model) + ', model std : ' + str(std_model)
+    title = f"model mean : {mean_model}, model std : {std_model}"
     plt.title(title)
     plt.xlabel('value')
     plt.ylabel('nb of occurrences')
-    plt.savefig('model_hist_mean_' +
-                str(mean_model) + '_std_' +
-                str(std_model) + '.pdf')
+    plt.savefig(f"images/model_hist_mean_{mean_model}_std_{std_model}.pdf")
     plt.close()
 
 
 try_model(4, 1, empirical_data, bins)
 try_model(10, 3, empirical_data, bins)
-try_model(10, 5, empirical_data, bins)

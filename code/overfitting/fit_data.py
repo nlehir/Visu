@@ -91,7 +91,7 @@ def plot_polynom_sample(polynom, x_train, y_train):
         Plot the result of fitting the polynom
         to the training set
     """
-    degree = len(polynom)
+    degree = len(polynom)-1
     title = f"Polynomial fit on training set, degree={degree}"
     filename = f"Fit_degree_{degree}.pdf"
     x_plot = np.linspace(xlim_left, xlim_right, 500)
@@ -119,7 +119,7 @@ def plot_polynom_zoom_out(polynom, x_train, y_train):
        and its predictions on points that are
        far from the training set.
     """
-    degree = len(polynom)
+    degree = len(polynom)-1
     title = f"Polynom prediction on global dataset, degree={degree}"
     filename = f"Global_degree_{degree}.pdf"
     x_out_left = -200

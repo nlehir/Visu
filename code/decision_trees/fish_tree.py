@@ -12,19 +12,18 @@ feature_names = ["length", "weight"]
 class_names = ["tuna", "salmon"]
 
 max_depth = 2
-our_tree = tree.DecisionTreeClassifier(max_depth=max_depth,
-                                       criterion="entropy")
-our_tree = our_tree.fit(fish_features, fish_class)
+classifier = tree.DecisionTreeClassifier(max_depth=max_depth, criterion="entropy")
+classifier = classifier.fit(fish_features, fish_class)
 
 # convert the graph to graphviz in order to visualize it
-dot_data_minimal = tree.export_graphviz(our_tree,
+dot_data_minimal = tree.export_graphviz(classifier,
                                         out_file=None,
                                         feature_names=feature_names,
                                         class_names=class_names,
                                         filled=True,
                                         rounded=True)
 graph = graphviz.Source(dot_data_minimal)
-graph.render("images/fish_max_depth_{}.pdf".format(max_depth))
+graph.render(f"images/fish_max_depth_{max_depth}.pdf"))
 
 # predicion
 
@@ -32,7 +31,7 @@ graph.render("images/fish_max_depth_{}.pdf".format(max_depth))
 # new_fish_1_length = 35
 # new_fish_1_weight = 4
 # new_fish_1 = np.array([[new_fish_1_length, new_fish_1_weight]])
-# prediction = our_tree.predict(new_fish_1)
+# prediction = classifier.predict(new_fish_1)
 # if prediction == 1:
 #     predicted_class = "salmon"
 # elif prediction == 0:
@@ -45,7 +44,7 @@ graph.render("images/fish_max_depth_{}.pdf".format(max_depth))
 # new_fish_2_length = 60
 # new_fish_2_weight = 7
 # new_fish_2 = np.array([[new_fish_2_length, new_fish_2_weight]])
-# prediction = our_tree.predict(new_fish_2)
+# prediction = classifier.predict(new_fish_2)
 # if prediction == 1:
 #     predicted_class = "salmon"
 # elif prediction == 0:

@@ -1,0 +1,25 @@
+---
+day 1
+---
+definition of big data
+orders of magnitude
+definition of big data visualization
+data modelling
+supervised learning
+unsupervised learning
+hierarchical clustering
+reminders on random variables
+overfitting
+principal component analysis
+
+---
+day 2
+---
+classical visualization methods
+scatter matrices
+parallel coordinate plots
+miscellaneous : radar plots, heat maps
+treemaps
+visualization platforms
+classification trees
+reliability, metrics, prediction errors

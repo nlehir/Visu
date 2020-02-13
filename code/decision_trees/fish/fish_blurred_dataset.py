@@ -1,7 +1,8 @@
+"""
+    add another feature to the dataset
+"""
 # create a simple fish dataset
-import ipdb
 import numpy as np
-import matplotlib.pyplot as plt
 
 nb_data = 400
 
@@ -23,27 +24,5 @@ fish_features = np.column_stack((fish_length, fish_weight))
 fish_class = np.concatenate((np.zeros(nb_data), np.ones(nb_data)))
 
 # save the data to python files
-np.save("fish_features", fish_features)
-np.save("fish_class", fish_class)
-
-"""
-plot histograms
-"""
-nbins = 50
-plt.hist(fish_length, bins=nbins)
-title = "distribution of the length of the fish in centimeters"
-plt.title(title)
-plt.xlabel('value')
-plt.ylabel('nb of occurrences')
-plt.savefig("images/fish_length.pdf")
-plt.close()
-
-
-nbins = 50
-plt.hist(fish_weight, bins=nbins)
-title = "distribution of the weight of the fish in kilos"
-plt.title(title)
-plt.xlabel('value')
-plt.ylabel('nb of occurrences')
-plt.savefig("images/fish_weight.pdf")
-plt.close()
+np.save("data/fish_features_blurred", fish_features)
+np.save("data/fish_class_blurred", fish_class)

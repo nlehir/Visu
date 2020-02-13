@@ -5,8 +5,8 @@ from sklearn import tree
 import graphviz
 from sklearn.tree import DecisionTreeClassifier
 
-fish_features = np.load("fish_features.npy")
-fish_class = np.load("fish_class.npy")
+fish_features = np.load("data/fish_features.npy")
+fish_class = np.load("data/fish_class.npy")
 
 feature_names = ["length", "weight"]
 class_names = ["tuna", "salmon"]

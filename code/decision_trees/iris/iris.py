@@ -19,4 +19,4 @@ dot_data = tree.export_graphviz(our_tree,
                                 rounded=True,
                                 special_characters=True)
 graph = graphviz.Source(dot_data)
-graph.render("images/iris")
+graph.render("iris")

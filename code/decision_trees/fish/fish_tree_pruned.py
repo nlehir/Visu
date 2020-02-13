@@ -1,12 +1,11 @@
 # build a tree for fish
 import numpy as np
-import ipdb
 from sklearn import tree
 import graphviz
 from sklearn.tree import DecisionTreeClassifier
 
-fish_features = np.load("fish_features_blurred.npy")
-fish_class = np.load("fish_class_blurred.npy")
+fish_features = np.load("data/fish_features_blurred.npy")
+fish_class = np.load("data/fish_class_blurred.npy")
 
 feature_names = ["length", "weight"]
 class_names = ["tuna", "salmon"]

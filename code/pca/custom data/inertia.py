@@ -67,10 +67,10 @@ def test_axis(axis, x_data, y_data):
                  label="projected vector")
 
 
-    plt.title(f"axis=({axis[0]:.1f}, {axis[1]:.1f}) \ninertia = {inertia:.1f}")
+    plt.title(f"axis=({axis[0]:.2f}, {axis[1]:.2f}) \ninertia = {inertia:.2f}")
     plt.xlim([-10, 10])
     plt.ylim([-10, 10])
-    plt.savefig(f"images/projection axis=({axis[0]:.1f}, {axis[1]:.1f}).pdf")
+    plt.savefig(f"images/projection axis=({axis[0]:.2f}, {axis[1]:.2f}).pdf")
     plt.close()
 
 

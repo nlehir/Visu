@@ -26,8 +26,11 @@ pca = PCA(n_components=2)
 pca.fit(pca_data)
 
 # principal component obtained by the algorithm
+print("components")
 print(pca.components_)
 
 # variance carried by those axes
-print(pca.explained_variance_)
+print(f"\nexplained variance {pca.explained_variance_}")
 
+# variance ratio carried by those axes
+print(f"\nexplained variance ratio {pca.explained_variance_ratio_}")

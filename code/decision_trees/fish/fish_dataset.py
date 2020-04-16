@@ -35,7 +35,7 @@ title = "distribution of the length of the fish in centimeters"
 plt.title(title)
 plt.xlabel('value')
 plt.ylabel('nb of occurrences')
-plt.savefig("images/fish_length.pdf")
+plt.savefig("images/visualizations/fish_length.pdf")
 plt.close()
 
 
@@ -44,7 +44,7 @@ title = "distribution of the weight of the fish in kilos"
 plt.title(title)
 plt.xlabel('value')
 plt.ylabel('nb of occurrences')
-plt.savefig("images/fish_weight.pdf")
+plt.savefig("images/visualizations/fish_weight.pdf")
 plt.close()
 
 """
@@ -57,7 +57,7 @@ plt.title(title)
 plt.xlabel('value')
 plt.ylabel('nb of occurrences')
 plt.legend(loc="best")
-plt.savefig("images/fish_length_with_class.pdf")
+plt.savefig("images/visualizations/fish_length_with_class.pdf")
 plt.close()
 
 plt.hist(tuna_weight, color="green", bins=nbins, label="tuna", alpha=0.5)
@@ -67,5 +67,5 @@ plt.title(title)
 plt.xlabel('value')
 plt.ylabel('nb of occurrences')
 plt.legend(loc="best")
-plt.savefig("images/fish_weight_with_class.pdf")
+plt.savefig("images/visualizations/fish_weight_with_class.pdf")
 plt.close()

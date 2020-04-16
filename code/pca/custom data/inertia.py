@@ -66,6 +66,7 @@ def test_axis(axis, x_data, y_data):
                  alpha=0.5,
                  label="projected vector")
 
+    inertia/=nb_datapoints
 
     plt.title(f"axis=({axis[0]:.2f}, {axis[1]:.2f}) \ninertia = {inertia:.2f}")
     plt.xlim([-10, 10])

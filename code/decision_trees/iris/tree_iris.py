@@ -7,7 +7,7 @@ from sklearn.tree import DecisionTreeClassifier
 # from sklearn.tree.export import export_text
 
 iris = load_iris()
-our_tree = tree.DecisionTreeClassifier()
+our_tree = tree.DecisionTreeClassifier(min_impurity_decrease=0.1)
 our_tree = our_tree.fit(iris.data, iris.target)
 
 # plot the graph
@@ -19,4 +19,4 @@ dot_data = tree.export_graphviz(our_tree,
                                 rounded=True,
                                 special_characters=True)
 graph = graphviz.Source(dot_data)
-graph.render("iris")
+graph.render("tree_iris")

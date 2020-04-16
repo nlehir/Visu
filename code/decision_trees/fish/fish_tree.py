@@ -23,7 +23,7 @@ dot_data_minimal = tree.export_graphviz(classifier,
                                         filled=True,
                                         rounded=True)
 graph = graphviz.Source(dot_data_minimal)
-graph.render(f"images/fish_max_depth_{max_depth}.pdf"))
+graph.render(f"images/trees/fish_max_depth_{max_depth}.pdf")
 
 # predicion
 

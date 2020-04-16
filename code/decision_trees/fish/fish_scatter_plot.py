@@ -23,4 +23,4 @@ plt.plot(salmon_length, salmon_weight, 'o', color="blue", alpha=0.5,
 plt.xlabel("fish length")
 plt.ylabel("fish weight")
 plt.legend(loc="best")
-plt.savefig("images/scatter plot.pdf")
+plt.savefig("images/fish_scatter plot.pdf")

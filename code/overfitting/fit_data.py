@@ -135,7 +135,7 @@ def plot_polynom_zoom_out(polynom, x_train, y_train):
     plt.close()
 
 
-for degree in range(2):
+for degree in range(20):
     print(f"---\npolynom degree {degree}")
     poly = fit_polynom(degree, x_train, y_train)
     print(

@@ -11,8 +11,8 @@ import numpy as np
 # open file
 file_name = 'empirical_distribution.csv'
 
-index = []
-data = []
+index = list()
+data = list()
 
 # load the csv file to python lists
 with open(file_name, 'r') as f:

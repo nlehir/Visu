@@ -1,12 +1,8 @@
 # create a simple fish dataset
-import ipdb
 import numpy as np
 import matplotlib.pyplot as plt
 
 nb_data = 400
-
-# we consider binary weights
-fish_features = np.random.randint(2, size=(nb_data, 2))
 
 # length in centimeters
 tuna_length = np.random.normal(45, 6, (nb_data,))

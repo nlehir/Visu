@@ -1,3 +1,20 @@
 .DS_Store
 *.swp
 *.swo
+ __pycache__/
+ *.pyc
+ *__pycache__/*
+code/*/__pycache__/
+code/.cache/*
+code/.config/*
+code/.ipython/*
+code/.jupyter/*
+code/.local/*
+code/.bash_history
+code/tags
+code/.ipython_history*
+code/.ipynb_checkpoints/*
+code/gradient/.ipynb_checkpoints/*
+code/compatibility_graphs/other_data/.ipynb_checkpoints/*
+code/other_graphs/.ipynb_checkpoints/*
+code/numpy_demo/.ipynb_checkpoints/*

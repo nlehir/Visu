@@ -5,6 +5,7 @@
  *.pyc
  *__pycache__/*
 code/*/__pycache__/
+
 code/.cache/*
 code/.config/*
 code/.ipython/*
@@ -14,6 +15,7 @@ code/.bash_history
 code/tags
 code/.ipython_history*
 code/.ipynb_checkpoints/*
+
 code/gradient/.ipynb_checkpoints/*
 code/compatibility_graphs/other_data/.ipynb_checkpoints/*
 code/other_graphs/.ipynb_checkpoints/*

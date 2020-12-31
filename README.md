@@ -1,4 +1,4 @@
-# Introduction to algorithms course
+# Visualization of massive data.
 This repository contains slides and exercices for 5th year students at epitech for the course
 "Visualization of massive data".
 
@@ -8,6 +8,30 @@ material for students to work locally after cloning the repository.
 The branch "correction" contains correct scripts. Students are encouraged to
 work rather with the "exercise" branch during the module, in order to have the
 time to look for the solutions, that are discussed during the course.
+
+## Course outline
+
+### Day 1
+- definition of big data
+- orders of magnitude
+- definition of big data visualization
+- data modelling
+- supervised learning
+- unsupervised learning
+- hierarchical clustering
+- reminders on random variables
+- overfitting
+- principal component analysis
+
+### Day 2
+- classical visualization methods
+- scatter matrices
+- parallel coordinate plots
+- miscellaneous : radar plots, heat maps
+- treemaps
+- visualization platforms
+- classification trees
+- reliability, metrics, prediction errors
 
 ## Jupyter notebooks
 We can use the convenient jupyter notebooks during the course. 

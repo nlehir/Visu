@@ -32,6 +32,7 @@ time to look for the solutions, that are discussed during the course.
 - visualization platforms
 - classification trees
 - reliability, metrics, prediction errors
+- advanced methods
 
 ## Jupyter notebooks
 We can use the convenient jupyter notebooks during the course. 

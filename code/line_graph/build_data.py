@@ -31,11 +31,6 @@ offset = 5
 # noisy measurements
 tide_level = sine_waveform + noise + offset
 
-plt.plot(times, tide_level)
-plt.xlabel("time (hours)")
-plt.ylabel("tide level (meters)")
-plt.savefig("tide_level_measurements.pdf")
-
 data = np.column_stack((times, tide_level))
 
-np.savetxt("noisy_data.csv", data, delimiter=",")
+np.savetxt("data.csv", data, delimiter=",")

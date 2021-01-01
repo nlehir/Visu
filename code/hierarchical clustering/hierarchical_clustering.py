@@ -11,8 +11,8 @@ import csv
 # open file
 file_name = 'addresses.csv'
 
-x_coordinates = []
-y_coordinates = []
+x_coordinates = list()
+y_coordinates = list()
 
 # load the data
 with open(file_name, 'r') as f:
@@ -30,41 +30,44 @@ data = np.column_stack((x_coordinates, y_coordinates))
 """
 # # first method manual plot
 nb_datapoints = x_coordinates.shape[0]
-# for datapoint in range(nb_datapoints):
-#     plt.plot(x_coordinates[datapoint], y_coordinates[datapoint], "o")
-# plt.title("scatter plot of addresses")
-# plt.xlabel("x coordinate")
-# plt.ylabel("y coordinate")
-# plt.savefig("scatter_plot_manual.pdf")
-# plt.close()
-#
-# # second method
-# plt.plot(x_coordinates, y_coordinates, "o")
-# plt.title("scatter plot of addresses")
-# plt.xlabel("x coordinate")
-# plt.ylabel("y coordinate")
-# plt.savefig("scatter_plot_manual_2.pdf")
-# plt.close()
-#
-# # third method : matplotlib function
-# plt.scatter(x_coordinates, y_coordinates)
-# plt.xlabel("x coordinate")
-# plt.ylabel("y coordinate")
-# plt.savefig("scatter_plot_matplotlib.pdf")
-# plt.close()
-#
-# # fourth method : with seaborn
-# sns.scatterplot(x_coordinates, y_coordinates)
-# plt.savefig("scatter_plot_seaborn.pdf")
-# plt.close()
+for datapoint in range(nb_datapoints):
+    plt.plot(x_coordinates[datapoint], y_coordinates[datapoint], "o")
+plt.title("scatter plot of addresses")
+plt.xlabel("x coordinate")
+plt.ylabel("y coordinate")
+plt.savefig("scatter_plot_manual.pdf")
+plt.close()
+
+# second method
+plt.plot(x_coordinates, y_coordinates, "o")
+plt.title("scatter plot of addresses")
+plt.xlabel("x coordinate")
+plt.ylabel("y coordinate")
+plt.savefig("scatter_plot_manual_2.pdf")
+plt.close()
+
+# third method : matplotlib function
+plt.scatter(x_coordinates, y_coordinates)
+plt.xlabel("x coordinate")
+plt.ylabel("y coordinate")
+plt.savefig("scatter_plot_matplotlib.pdf")
+plt.close()
+
+# fourth method : with seaborn
+sns.scatterplot(x_coordinates, y_coordinates)
+plt.savefig("scatter_plot_seaborn.pdf")
+plt.close()
 
 
 """
     Part B : hierarchical clustering.
     We will use agglomerative clustering.
 """
+# choose metric
+metric = "euclidean"
+
 # build distance matrix between points
-condensed_distance = scipy.spatial.distance.pdist(data)
+condensed_distance = scipy.spatial.distance.pdist(data, metric=metric)
 distance_matrix = scipy.spatial.distance.squareform(condensed_distance)
 
 # initializes classes
@@ -83,23 +86,46 @@ def find_closest_classes(classes):
                 class_1 = classes[index_1]
                 class_2 = classes[index_2]
                 # compute the distance between the two classes
-                class_dist = distance_between_classes(class_1, class_2)
+                class_dist = distance_between_classes_single_linkage(class_1, class_2)
                 if class_dist < min_dist:
                     min_dist = class_dist
                     returned_classes = (index_1, index_2)
     return returned_classes
 
 
-def distance_between_classes(class_1, class_2):
+def distance_between_classes_single_linkage(class_1, class_2):
+    """
+        single linkage clustering.
+        The distance is the minimum distance between
+        any point in class_1 and any point in class_2
+    """
     min_dist = np.max(distance_matrix)
     for index_1 in class_1:
         for index_2 in class_2:
-            point_1 = data[index_1]
-            point_2 = data[index_2]
-            euclidean_dist = scipy.spatial.distance.euclidean(point_1, point_2)
-            if euclidean_dist < min_dist:
-                min_dist = euclidean_dist
+            dist = distance_matrix[index_1, index_2]
+            if dist < min_dist:
+                min_dist = dist
     return min_dist
+
+
+def distance_between_classes_average_linkage(class_1, class_2):
+    """
+        average linkage clustering
+        The distance is the average of distances between
+        apoint in class_1 a point in class_2
+    """
+    min_dist = np.max(distance_matrix)
+    distances = list()
+    for index_1 in class_1:
+        for index_2 in class_2:
+            dist = distance_matrix[index_1, index_2]
+            # point_1 = data[index_1]
+            # point_2 = data[index_2]
+            # dist = scipy.spatial.distance.euclidean(point_1, point_2)
+            distances.append(dist)
+    # average the distances
+    average_distances = sum(distances)/len(distances)
+    return average_distances
 
 
 def define_color(index):
@@ -116,6 +142,10 @@ def plot_clustering(step, classes):
         y_coord = y_coordinates[class_to_plot]
         color = define_color(index)
         plt.plot(x_coord, y_coord, "o", color=color)
+    plt.title(f"hierarchical clustering\nstep {step}"\
+              f"\n{len(classes)} clusters\n"\
+             f"{metric} metric")
+    plt.tight_layout()
     plt.savefig(f"clustering/clustering_step_{step}.pdf")
     plt.close()
 

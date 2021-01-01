@@ -7,11 +7,11 @@ from sklearn.tree import DecisionTreeClassifier
 # from sklearn.tree.export import export_text
 
 iris = load_iris()
-our_tree = tree.DecisionTreeClassifier(min_impurity_decrease=0.1)
-our_tree = our_tree.fit(iris.data, iris.target)
+classifier = tree.DecisionTreeClassifier(min_impurity_decrease=0.1)
+classifier = classifier.fit(iris.data, iris.target)
 
 # plot the graph
-dot_data = tree.export_graphviz(our_tree,
+dot_data = tree.export_graphviz(classifier,
                                 out_file=None,
                                 feature_names=iris.feature_names,
                                 class_names=iris.target_names,

@@ -7,7 +7,6 @@ fish_class = np.load("data/fish_class.npy")
 feature_names = ["length", "weight"]
 class_names = ["tuna", "salmon"]
 
-
 tuna_index = np.where(fish_class == 0)[0]
 salmon_index = np.where(fish_class == 1)[0]
 
@@ -23,4 +22,4 @@ plt.plot(salmon_length, salmon_weight, 'o', color="blue", alpha=0.5,
 plt.xlabel("fish length")
 plt.ylabel("fish weight")
 plt.legend(loc="best")
-plt.savefig("images/fish_scatter plot.pdf")
+plt.savefig("images/visualizations/fish_scatter plot.pdf")

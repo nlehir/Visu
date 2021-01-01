@@ -21,13 +21,13 @@ def analyze_directory(directory):
             size = directory_size(item_path)
             if size > 1e6:
                 print(f"directory {item}: {size/1e6} MB")
-                size_dict[item] = size
+                size_dict[item + f", {size/1e6:.2f} MB"] = size
         # check if item is a file
         elif os.path.isfile(item_path):
             size = os.path.getsize(item_path)
             if size > 1e6:
                 print(f"file {item}: {size/1e6} MB")
-                size_dict[item] = size
+                size_dict[item + f", {size/1e6:.2f} MB"] = size
     return size_dict
 
 colors = ["darkcyan",

@@ -7,7 +7,7 @@ from sklearn.decomposition import PCA
 
 
 # load and center the data
-pca_data = np.load("pca_data.npy")
+pca_data = np.load("data.npy")
 x_data = pca_data[:, 0]
 y_data = pca_data[:, 1]
 x_mean = np.mean(x_data)

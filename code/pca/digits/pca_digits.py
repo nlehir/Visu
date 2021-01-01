@@ -14,7 +14,6 @@ projected_data = pca.fit_transform(digits.data)
 
 print(projected_data.shape)
 
-
 plt.scatter(projected_data[:, 0], projected_data[:, 1],
             c=digits.target, edgecolor='none', alpha=0.5,
             cmap=plt.cm.get_cmap('jet', 10))

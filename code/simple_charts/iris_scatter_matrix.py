@@ -11,6 +11,6 @@ df = sns.load_dataset("iris")
 sns.pairplot(df, hue="species")
 
 title = 'Scatter matrix of the iris dataset'
-file = 'iris_scatter_matrix.pdf'
+filename = 'iris_scatter_matrix.pdf'
 plt.title(title)
-plt.savefig(file)
+plt.savefig(filename)

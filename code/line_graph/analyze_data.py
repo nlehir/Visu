@@ -10,7 +10,7 @@ import csv
 import scipy.optimize
 
 # open file
-file_name = 'noisy_data.csv'
+file_name = 'data.csv'
 
 times = []
 tide_level = []
@@ -53,7 +53,7 @@ plt.close()
 
 """
     Part B : we want to select a subset
-    of the dataset that could be usefule in order
+    of the dataset that could be useful in order
     to find structure in it.
 """
 selected_id = np.arange(20, 1200)
@@ -90,7 +90,7 @@ def fit_sinus(times, tide_level):
     """
     # guess initial values for the parameters
     # using spectral analysis
-    # transformation de Fourier
+    # Fourier transform
     ff = np.fft.fftfreq(len(times), (times[1]-times[0]))
     Ftide_level = abs(np.fft.fft(tide_level))
     guess_freq = abs(ff[np.argmax(Ftide_level[1:])+1])
@@ -99,19 +99,19 @@ def fit_sinus(times, tide_level):
     guess = np.array([guess_amp, 2.*np.pi*guess_freq, 0., guess_offset])
 
     # define the function to optimize
-    def sinfunc(t, A, w, p, c):
-        return A * np.sin(w*t + p) + c
+    def sinfunc(t, A, w, phi, offset):
+        return A * np.sin(w*t + phi) + offset
 
     popt, _ = scipy.optimize.curve_fit(sinfunc, times, tide_level, p0=guess)
 
-    A, w, p, c = popt
+    A, w, phi, offset = popt
     f = w/(2.*np.pi)
     def fitted_function(new_time):
-        return A * np.sin(w*new_time + p) + c
+        return A * np.sin(w*new_time + phi) + offset
 
     print(f"amplitude : {A}")
     print(f"period : {1./f}")
-    print(f"offset : {1./f}")
+    print(f"offset : {offset}")
 
     return fitted_function
 
@@ -122,11 +122,11 @@ fitted_function = fit_sinus(times, tide_level)
 """
 predicted_tide_level=fitted_function(times)
 
-plt.plot(times, tide_level, "o")
-plt.plot(times, predicted_tide_level)
+plt.plot(times, tide_level, "o", label="measured data")
+plt.plot(times, predicted_tide_level, label="model")
+plt.legend(loc="best")
 plt.title("tide level as a function of time")
 plt.xlabel("time (hours)")
 plt.ylabel("tide level (meters)")
 plt.savefig("prediction.pdf")
-plt.plot(times, tide_level)
 plt.close()

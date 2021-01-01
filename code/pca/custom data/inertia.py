@@ -13,24 +13,32 @@ def orthogonal_projection(vector, axis):
 
 
 # load and center the data
-pca_data = np.load("pca_data.npy")
-x_data = pca_data[:, 0]
-y_data = pca_data[:, 1]
+data = np.load("data.npy")
+x_data = data[:, 0]
+y_data = data[:, 1]
 x_mean = np.mean(x_data)
 y_mean = np.mean(y_data)
 # center the data
 x_data = x_data-np.mean(x_data)
 y_data = y_data-np.mean(y_data)
-pca_data = np.column_stack((x_data, y_data))
-# plot the data
+data = np.column_stack((x_data, y_data))
+# plot the centered data
 plt.plot(x_data, y_data, "o", color="olivedrab", markersize="3")
-plt.savefig("centered data.pdf")
+plt.title("centered data")
+plt.savefig("images/centered data.pdf")
+
 
 def test_axis(axis, x_data, y_data):
     """
         function used to evaluate the inertia
         of the data related to an axis.
         we assume the data are centered.
+
+        axis is encoded by a vector M=(u, v),
+        such that the axis corresponds to
+        the straight the line (OM).
+
+        u must be nonzero.
     """
     # normalize the axis
     axis = 1/np.linalg.norm(axis)*axis
@@ -53,7 +61,7 @@ def test_axis(axis, x_data, y_data):
     nb_datapoints = x_data.shape[0]
     inertia = 0
     for datapoint_index in range(nb_datapoints):
-        vector = pca_data[datapoint_index, :]
+        vector = data[datapoint_index, :]
         projected_vector = orthogonal_projection(vector, axis)
         # check orthogonality
         # print(np.dot(axis, vector-projected_vector))
@@ -66,7 +74,7 @@ def test_axis(axis, x_data, y_data):
                  alpha=0.5,
                  label="projected vector")
 
-    inertia/=nb_datapoints
+    inertia /= nb_datapoints
 
     plt.title(f"axis=({axis[0]:.2f}, {axis[1]:.2f}) \ninertia = {inertia:.2f}")
     plt.xlim([-10, 10])

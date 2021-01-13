@@ -7,7 +7,7 @@ import numpy as np
 
 file_name = 'empirical_distribution.csv'
 
-mean = 10
+mean = 40
 std_dev = 5
 nb_point = 10000
 

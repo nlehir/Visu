@@ -52,7 +52,7 @@ def test_axis(axis, x_data, y_data):
     coefficient_directeur = axis[1]/axis[0]
     x_axis = np.linspace(-8, 8, 100)
     plt.plot(x_axis, coefficient_directeur*x_axis,
-             alpha="0.5",
+             alpha=0.5,
              color="darkblue",
              label="axis")
 
@@ -66,8 +66,9 @@ def test_axis(axis, x_data, y_data):
         # check orthogonality
         # print(np.dot(axis, vector-projected_vector))
         difference = vector-projected_vector
-        difference_norm = np.linalg.norm(difference)
-        inertia += difference_norm**2
+        """
+            Add lines here
+        """
         plt.plot([vector[0], projected_vector[0]],
                  [vector[1], projected_vector[1]],
                  color="mediumturquoise",
@@ -85,10 +86,4 @@ def test_axis(axis, x_data, y_data):
 
 # choose axes and compute the inertia
 axis = np.array([3, 1])
-test_axis(axis, x_data, y_data,)
-
-axis = np.array([1, -2])
-test_axis(axis, x_data, y_data,)
-
-axis = np.array([0.1, -2])
 test_axis(axis, x_data, y_data,)

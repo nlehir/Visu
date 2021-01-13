@@ -29,35 +29,6 @@ data = np.column_stack((x_coordinates, y_coordinates))
     Part A : show a scatter plot of the data
 """
 # # first method manual plot
-nb_datapoints = x_coordinates.shape[0]
-for datapoint in range(nb_datapoints):
-    plt.plot(x_coordinates[datapoint], y_coordinates[datapoint], "o")
-plt.title("scatter plot of addresses")
-plt.xlabel("x coordinate")
-plt.ylabel("y coordinate")
-plt.savefig("scatter_plot_manual.pdf")
-plt.close()
-
-# second method
-plt.plot(x_coordinates, y_coordinates, "o")
-plt.title("scatter plot of addresses")
-plt.xlabel("x coordinate")
-plt.ylabel("y coordinate")
-plt.savefig("scatter_plot_manual_2.pdf")
-plt.close()
-
-# third method : matplotlib function
-plt.scatter(x_coordinates, y_coordinates)
-plt.xlabel("x coordinate")
-plt.ylabel("y coordinate")
-plt.savefig("scatter_plot_matplotlib.pdf")
-plt.close()
-
-# fourth method : with seaborn
-sns.scatterplot(x_coordinates, y_coordinates)
-plt.savefig("scatter_plot_seaborn.pdf")
-plt.close()
-
 
 """
     Part B : hierarchical clustering.
@@ -80,16 +51,9 @@ for class_index in range(nb_datapoints):
 def find_closest_classes(classes):
     min_dist = np.max(distance_matrix)
     returned_classes = (0, 1)
-    for index_1 in range(len(classes)):
-        for index_2 in range(len(classes)):
-            if index_1 is not index_2:
-                class_1 = classes[index_1]
-                class_2 = classes[index_2]
-                # compute the distance between the two classes
-                class_dist = distance_between_classes_single_linkage(class_1, class_2)
-                if class_dist < min_dist:
-                    min_dist = class_dist
-                    returned_classes = (index_1, index_2)
+    """
+        Add lines here
+    """
     return returned_classes
 
 
@@ -100,11 +64,9 @@ def distance_between_classes_single_linkage(class_1, class_2):
         any point in class_1 and any point in class_2
     """
     min_dist = np.max(distance_matrix)
-    for index_1 in class_1:
-        for index_2 in class_2:
-            dist = distance_matrix[index_1, index_2]
-            if dist < min_dist:
-                min_dist = dist
+    """
+        Add lines here
+    """
     return min_dist
 
 
@@ -116,14 +78,10 @@ def distance_between_classes_average_linkage(class_1, class_2):
     """
     min_dist = np.max(distance_matrix)
     distances = list()
-    for index_1 in class_1:
-        for index_2 in class_2:
-            dist = distance_matrix[index_1, index_2]
-            # point_1 = data[index_1]
-            # point_2 = data[index_2]
-            # dist = scipy.spatial.distance.euclidean(point_1, point_2)
-            distances.append(dist)
-    # average the distances
+    distances.append(1)
+    """
+        Add lines here
+    """
     average_distances = sum(distances)/len(distances)
     return average_distances
 

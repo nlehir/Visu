@@ -4,15 +4,14 @@ fit the noisy data
 
 import matplotlib.pyplot as plt
 import csv
-import ipdb
 import numpy as np
 import random
 
 # open file
 file_name = 'noisy_data.csv'
 
-inputs = []
-outputs = []
+inputs = list()
+outputs = list()
 
 with open(file_name, 'r') as f:
     reader = csv.reader(f)
@@ -135,7 +134,7 @@ def plot_polynom_zoom_out(polynom, x_train, y_train):
     plt.close()
 
 
-for degree in range(35):
+for degree in range(2):
     print(f"---\npolynom degree {degree}")
     poly = fit_polynom(degree, x_train, y_train)
     print(

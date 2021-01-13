@@ -3,7 +3,6 @@ Using the KL divergenve, choose the best model to fit the data
 """
 
 import csv
-# import ipdb
 import matplotlib.pyplot as plt
 from scipy.stats import entropy
 import numpy as np
@@ -105,9 +104,3 @@ def try_model(mean_model, std_model, empirical_data, bins):
     plt.ylabel('nb of occurrences')
     plt.savefig(f"images/model_hist_mean_{mean_model}_std_{std_model}.pdf")
     plt.close()
-
-
-try_model(35, 5, empirical_data, bins)
-try_model(35, 3, empirical_data, bins)
-try_model(30, 2, empirical_data, bins)
-try_model(32, 4, empirical_data, bins)

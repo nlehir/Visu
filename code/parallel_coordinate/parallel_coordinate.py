@@ -7,12 +7,17 @@ fig = plt.figure()
 
 
 def plot_data_point(datapoint, fig):
-    plt.plot(range(len(datapoint)), datapoint)
+    """
+        Add lines here
+    """
+    pass
 
 
 for point_index in range(data.shape[0]):
-    datapoint = data[point_index, :]
-    plot_data_point(datapoint, fig)
+    """
+        Edit function
+    """
+    plot_data_point(1, fig)
 
 
 labels = ["Var 1", "Var 2", "Var 3", "Var 4"]

@@ -21,13 +21,13 @@ def analyze_directory(directory):
             size = directory_size(item_path)
             if size > 1e6:
                 print(f"directory {item}: {size/1e6} MB")
-                size_dict[item + f", {size/1e6:.2f} MB"] = size
+                size_dict[item + f", {size/1e6:.2f} MB"] = 2
         # check if item is a file
         elif os.path.isfile(item_path):
             size = os.path.getsize(item_path)
             if size > 1e6:
                 print(f"file {item}: {size/1e6} MB")
-                size_dict[item + f", {size/1e6:.2f} MB"] = size
+                size_dict[item + f", {size/1e6:.2f} MB"] = 2
     return size_dict
 
 colors = ["darkcyan",
@@ -36,8 +36,8 @@ colors = ["darkcyan",
           "lightskyblue"]
 
 def plot_tree_map(size_dict):
-    sizes = size_dict.values()
-    labels = size_dict.keys()
+    sizes = [1, 2]
+    labels = [1, 2]
     squarify.plot(sizes=sizes, label=labels, alpha=0.7)
     plt.savefig("Desktop_tree_map.pdf")
 

@@ -17,13 +17,9 @@ salmon_weight = np.random.normal(4, 1, (nb_data,))
 fish_weight = np.concatenate((tuna_weight, salmon_weight))
 
 #  birth hour
-salmon_birth_hour = np.random.uniform(0, 10, (nb_data,))
-tuna_birth_hour = np.random.uniform(0, 10, (nb_data,))
-fish_birth_hour = np.concatenate((tuna_birth_hour, salmon_birth_hour))
 
 # put all the features together
 fish_features = np.column_stack((fish_length, fish_weight))
-fish_features = np.column_stack((fish_features, fish_birth_hour))
 fish_class = np.concatenate((np.zeros(nb_data), np.ones(nb_data)))
 
 # save the data to python files

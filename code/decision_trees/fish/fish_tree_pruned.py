@@ -10,12 +10,12 @@ fish_class = np.load("data/fish_class_blurred.npy")
 feature_names = ["length", "weight", "birth hour"]
 class_names = ["tuna", "salmon"]
 
-max_depth = 6
+max_depth = 8
 classifier = tree.DecisionTreeClassifier(max_depth=max_depth,
                                          criterion="entropy",
-                                         min_samples_split=100,
-                                         min_samples_leaf=50,
-                                         min_impurity_decrease=0.04)
+                                         min_samples_split=2,
+                                         min_samples_leaf=2,
+                                         min_impurity_decrease=0.00)
 classifier = classifier.fit(fish_features, fish_class)
 
 # convert the graph to graphviz in order to visualize it

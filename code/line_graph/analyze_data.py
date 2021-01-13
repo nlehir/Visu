@@ -12,8 +12,8 @@ import scipy.optimize
 # open file
 file_name = 'data.csv'
 
-times = []
-tide_level = []
+times = list()
+tide_level = list()
 
 # load the data
 with open(file_name, 'r') as f:
@@ -29,53 +29,16 @@ tide_level = np.asarray(tide_level)
     Part A : we want to plot the line graph
     of the tide lebel as a function of time.
 """
-# plot the line graph of the data
-plt.plot(times, tide_level)
-plt.title("tide level as a function of time")
-plt.xlabel("time (hours)")
-plt.ylabel("tide level (meters)")
-plt.savefig("tide_level.pdf")
-plt.close()
-
-plt.plot(times, tide_level, "o")
-plt.title("tide level as a function of time")
-plt.xlabel("time (hours)")
-plt.ylabel("tide level (meters)")
-plt.savefig("tide_level_o.pdf")
-plt.close()
-
-plt.plot(times, tide_level, "x")
-plt.title("tide level as a function of time")
-plt.xlabel("time (hours)")
-plt.ylabel("tide level (meters)")
-plt.savefig("tide_level_x.pdf")
-plt.close()
 
 """
     Part B : we want to select a subset
     of the dataset that could be useful in order
     to find structure in it.
 """
-selected_id = np.arange(20, 1200)
-selected_time_index = times[selected_id]
-selected_level = tide_level[selected_id]
-
-plt.plot(selected_time_index, selected_level, "o")
-plt.title("selected tide level as a function of time")
-plt.xlabel("time (hours)")
-plt.ylabel("tide level (meters)")
-plt.savefig("selected_tide_level.pdf")
 
 """
     Part C : manually selected plot limits.
 """
-plt.plot(times, tide_level, "o")
-plt.title("tide level as a function of time")
-plt.xlabel("time (hours)")
-plt.ylabel("tide level (meters)")
-plt.xlim([2,8])
-plt.savefig("tide_level_limits.pdf")
-plt.close()
 
 """
     Part D : optimizing a function
@@ -115,18 +78,18 @@ def fit_sinus(times, tide_level):
 
     return fitted_function
 
-fitted_function = fit_sinus(times, tide_level)
-
-"""
-    Part E : visually assess our optimized function
-"""
-predicted_tide_level=fitted_function(times)
-
-plt.plot(times, tide_level, "o", label="measured data")
-plt.plot(times, predicted_tide_level, label="model")
-plt.legend(loc="best")
-plt.title("tide level as a function of time")
-plt.xlabel("time (hours)")
-plt.ylabel("tide level (meters)")
-plt.savefig("prediction.pdf")
-plt.close()
+# fitted_function = fit_sinus(times, tide_level)
+# 
+# """
+#     Part E : visually assess our optimized function
+# """
+# predicted_tide_level=fitted_function(times)
+# 
+# plt.plot(times, tide_level, "o", label="measured data")
+# plt.plot(times, predicted_tide_level, label="model")
+# plt.legend(loc="best")
+# plt.title("tide level as a function of time")
+# plt.xlabel("time (hours)")
+# plt.ylabel("tide level (meters)")
+# plt.savefig("prediction.pdf")
+# plt.close()

@@ -1,6 +1,5 @@
 # build a tree for fish
 import numpy as np
-import ipdb
 from sklearn import tree
 import graphviz
 from sklearn.tree import DecisionTreeClassifier

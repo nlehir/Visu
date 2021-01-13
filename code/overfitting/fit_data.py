@@ -4,15 +4,14 @@ fit the noisy data
 
 import matplotlib.pyplot as plt
 import csv
-import ipdb
 import numpy as np
 import random
 
 # open file
 file_name = 'noisy_data.csv'
 
-inputs = []
-outputs = []
+inputs = list()
+outputs = list()
 
 with open(file_name, 'r') as f:
     reader = csv.reader(f)

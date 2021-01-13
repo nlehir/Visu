@@ -12,8 +12,8 @@ import scipy.optimize
 # open file
 file_name = 'data.csv'
 
-times = []
-tide_level = []
+times = list()
+tide_level = list()
 
 # load the data
 with open(file_name, 'r') as f:

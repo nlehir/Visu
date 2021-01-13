@@ -52,7 +52,7 @@ def test_axis(axis, x_data, y_data):
     coefficient_directeur = axis[1]/axis[0]
     x_axis = np.linspace(-8, 8, 100)
     plt.plot(x_axis, coefficient_directeur*x_axis,
-             alpha="0.5",
+             alpha=0.5,
              color="darkblue",
              label="axis")
 

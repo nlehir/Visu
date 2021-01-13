@@ -3,7 +3,6 @@ Using the KL divergenve, choose the best model to fit the data
 """
 
 import csv
-# import ipdb
 import matplotlib.pyplot as plt
 from scipy.stats import entropy
 import numpy as np

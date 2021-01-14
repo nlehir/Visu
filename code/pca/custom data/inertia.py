@@ -79,6 +79,8 @@ def test_axis(axis, x_data, y_data):
     plt.title(f"axis=({axis[0]:.2f}, {axis[1]:.2f}) \ninertia = {inertia:.2f}")
     plt.xlim([-10, 10])
     plt.ylim([-10, 10])
+    plt.gca().set_aspect('equal', adjustable='box')
+    plt.tight_layout()
     plt.savefig(f"images/projection axis=({axis[0]:.2f}, {axis[1]:.2f}).pdf")
     plt.close()
 
@@ -92,3 +94,8 @@ test_axis(axis, x_data, y_data,)
 
 axis = np.array([0.1, -2])
 test_axis(axis, x_data, y_data,)
+
+axis = np.array([-2.5, 8])
+test_axis(axis, x_data, y_data,)
+
+

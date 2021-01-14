@@ -21,9 +21,9 @@ with open(file_name, 'w') as csvfile:
 
 
 title = 'Noisy data'
-file = 'data_to_fit.pdf'
+filename = 'data_to_fit.pdf'
 plt.plot(inputs, outputs, 'o')
 plt.xlabel('input')
 plt.ylabel('output')
 plt.title(title)
-plt.savefig('images/' + file)
+plt.savefig('images/' + filename)
